@@ -16,6 +16,7 @@ function FormGeocoord() {
 
   return (
     <div className='form-wrapper'>
+        <h2>Узнать погоду в городах</h2>
         <form onSubmit={handleSubmit}>
             <input type="text" 
             className='input-search-city' 
