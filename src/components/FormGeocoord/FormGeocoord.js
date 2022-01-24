@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { coordinateRequestSearch } from '../../store/geocoord/actions';
 import './FormGeocoord.css';
 
 function FormGeocoord() {
+    const { loading, error } = useSelector(state => state.geocoordReducer);
+    const dispatch = useDispatch()
+
     const [ inputValue, setInputValue ] = useState('')
 
     const handleChange = (e) => {
@@ -10,7 +15,7 @@ function FormGeocoord() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(inputValue);
+        dispatch(coordinateRequestSearch(inputValue));
         setInputValue('');
     }
 

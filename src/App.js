@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './App.css';
 import FavouriteList from './components/FavouriteList/FavouriteList';
 import FormGeocoord from './components/FormGeocoord/FormGeocoord';
