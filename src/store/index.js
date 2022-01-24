@@ -1,7 +1,7 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import { combineEpics, createEpicMiddleware } from "redux-observable";
-import { coordinateRequestEpic } from "./geocoord/epics";
-import serviceGeocoordReducer from "./geocoord/reducer";
+import { coordinateRequestEpic, weatherRequestEpic } from "./geocoordAndWeather/epics";
+import serviceGeocoordReducer from "./geocoordAndWeather/reducer";
 
 
 const reduser = combineReducers({
@@ -10,7 +10,8 @@ const reduser = combineReducers({
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const epic = combineEpics(
-    coordinateRequestEpic
+    coordinateRequestEpic,
+    weatherRequestEpic,
 );
 
 const epicMiddleware = createEpicMiddleware();

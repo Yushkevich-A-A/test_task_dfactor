@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { coordinateRequestSearch } from '../../store/geocoord/actions';
+import { coordinateRequestSearch } from '../../store/geocoordAndWeather/actions';
 import './FormGeocoord.css';
 
 function FormGeocoord() {
