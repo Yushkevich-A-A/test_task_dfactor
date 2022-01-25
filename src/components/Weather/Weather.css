@@ -1,0 +1,46 @@
+.title-block {
+    display: flex;
+    align-items: center;
+}
+
+.title-block_h2 {
+    margin-right: 10px;
+}
+
+.heart {
+    width: 20px; 
+    height: 20px; 
+    transform: rotate(45deg);
+    position: relative; 
+}    
+
+.heart-active,
+.heart-active::before,
+.heart-active::after {
+    background-color: red; 
+}    
+.heart-disactive,
+.heart-disactive::before,
+.heart-disactive::after{
+    background-color: rgb(100, 100, 100);
+}
+
+.heart::before,
+.heart::after {
+    content : ''; 
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%; 
+    position: absolute;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: -10px;
+}    

@@ -1,21 +1,18 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import FavouriteItem from './FavouriteItem/FavouriteItem';
 import './FavouriteList.css';
 
 function FavouriteList(props) {
-  const item = {
-    city_name: 'Москва',
-    place_id : "ChIJybDUc_xKtUYRTM9XV8zWRD0",
-    coords: {
-      lat: 55.755826,
-      lng : 37.6172999,
-    }
-  }
+  const { favouriteList } = useSelector( state => state.favouriteListReducer);
 
   return (
     <div className='favourite-block'>
       <h2>Избранное</h2>
-      <FavouriteItem item={item}/>
+        { favouriteList.length === 0 && <div className="empty-list">Список избранного пуст</div> }
+        {
+          favouriteList.map( item => <FavouriteItem key={item.id} item={item}/>)
+        }
     </div>
   );
 }
