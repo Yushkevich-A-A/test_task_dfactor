@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './ButtonDelete.css';
 
 function ButtonDelete(props) {
@@ -11,5 +12,9 @@ function ButtonDelete(props) {
         </div>
   );
 }
+
+ButtonDelete.propTypes = {
+  handleClicRemove: PropTypes.func
+};
 
 export default ButtonDelete;

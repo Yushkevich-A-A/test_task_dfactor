@@ -2,8 +2,6 @@ const initialState = {
     favouriteList: JSON.parse(localStorage.getItem('favouriteList')) || [],
 }
 
-console.log(JSON.parse(localStorage.getItem('favouriteList')))
-
 const serviceFavouriteListReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_FAVOURITE_ITEM': 

@@ -1,6 +1,6 @@
 function translateKelvinToCelsius(value) {
     const celsius = value - 272.15;
-    return celsius.toFixed(2);
+    return Math.round(celsius);
 }
 
 export default translateKelvinToCelsius;

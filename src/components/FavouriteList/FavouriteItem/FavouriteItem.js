@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { removeFavouriteItem } from '../../../store/favourites/actions';
 import { coordinateRequestSuccess } from '../../../store/geocoordAndWeather/actions';
@@ -24,5 +25,9 @@ function FavouriteItem(props) {
         </div>
     );
 }
+
+FavouriteItem.propTypes = {
+    item: PropTypes.object,
+  };
 
 export default FavouriteItem;

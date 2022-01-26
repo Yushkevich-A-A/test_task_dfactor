@@ -1,5 +1,6 @@
 function dataHours(timestamp) {
-    const date = new Date(timestamp);
+    // debugger;
+    const date = new Date(timestamp * 1000);
 
     return `${date.getHours()}:${date.getMinutes()}`
 }

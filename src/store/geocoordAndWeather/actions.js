@@ -23,6 +23,5 @@ export const allDataReset = () => {
 }
 
 export const weatherRequestSuccess = (weather) => {
-    console.log(weather);
     return { type: 'WEATHER_REQUEST_SUCCESS', payload: { weather } };
 }

@@ -2,7 +2,7 @@ import { ofType } from 'redux-observable';
 import { of } from 'rxjs';
 import { fromFetch } from 'rxjs/fetch';
 import { map, switchMap, catchError  } from 'rxjs/operators';
-import { coordinateRequestError, coordinateRequestSuccess, requestErrorCitySearch, requestErrorWeatherSearch, weatherRequestSuccess } from './actions';
+import { coordinateRequestSuccess, requestErrorCitySearch, requestErrorWeatherSearch, weatherRequestSuccess } from './actions';
 
 export const coordinateRequestByNameEpic= action$ => action$.pipe(
     ofType('REQUEST_LOADING_BY_NAME'),
@@ -15,13 +15,14 @@ export const coordinateRequestByNameEpic= action$ => action$.pipe(
                     return requestErrorCitySearch('запрос отклонен');
                 }
                 if (o.status === "ZERO_RESULTS") {
-                    return requestErrorCitySearch('По данному запросу нет городов');
+                    return requestErrorCitySearch('Такого города не существует');
                 }
                 const name = o.results[0].address_components[0].long_name
                 return coordinateRequestSuccess(name)
             }),
-            catchError( e => of(requestErrorCitySearch(e)))
-            )),
+            catchError( e => of(requestErrorCitySearch('Произошла ошибка соединения')))
+        )
+    )
 )
 
 export const coordinateRequestByCoordEpic= action$ => action$.pipe(
@@ -36,7 +37,7 @@ export const coordinateRequestByCoordEpic= action$ => action$.pipe(
                 const name = o.results[0].address_components[0].long_name
                 return coordinateRequestSuccess(name)
             }),
-            catchError( e => of(requestErrorCitySearch(e)))
+            catchError( e => of(requestErrorCitySearch('Произошла ошибка соединения')))
             )),
 )
 
@@ -46,11 +47,11 @@ export const weatherRequestEpic= action$ => action$.pipe(
     switchMap( o => fromFetch(`https://api.openweathermap.org/data/2.5/weather?q=${o}&appid=3cccca9978c568002db59d4051ef23ac&lang=ru`, 
         { selector: response => response.json()}).pipe(
             map( o => {
-                if (o.cod === 404) {
+                if (o.cod === '404') {
                     return requestErrorWeatherSearch('Погода для выбранного города не найдена')
                 }
                 return weatherRequestSuccess(o);
             }),
-            catchError( e => of(requestErrorWeatherSearch(e)))
+            catchError( e => of(requestErrorWeatherSearch('Произошла ошибка соединения')))
             )),
 )

@@ -53,4 +53,16 @@
 .heart::after {
     top: 0;
     left: -10px;
-}    
+}
+
+.option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(202, 202, 202);
+    margin-bottom: 5px;
+}
+
+.name-option {
+    font-weight: 600;
+}
