@@ -1,6 +1,16 @@
+.weather-block-wrapper {
+    padding: 5px 15px;
+    min-width: 40%;
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+
 .title-block {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .title-block_h2 {

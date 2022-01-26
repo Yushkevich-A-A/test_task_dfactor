@@ -1,0 +1,25 @@
+import React from 'react';
+import './Loader.css';
+
+function Loader() {
+  return (
+    <div className="loading-spinner">
+        <div className="spiner-point">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+  );
+}
+
+export default Loader;

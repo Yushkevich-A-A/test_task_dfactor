@@ -1,11 +1,15 @@
 .favourite-item {
     display: flex;
     justify-content: space-between;
-    width: 200px;
-}
-
-.favourite-item {
+    align-items: center;
     padding: 5px;
     border: 1px solid #000;
     border-radius: 5px;
+    margin: 5px;
+}
+
+.favourite-city-name {
+    width: 95%;
+    cursor: pointer;
+    text-align: start;
 }

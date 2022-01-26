@@ -1,0 +1,9 @@
+.RequestBlockData {
+    width: 30%;
+}
+
+@media (max-width: 768px) {
+    .RequestBlockData {
+        width: 100%;
+    }
+}

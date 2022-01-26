@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { coordinateRequestSearch } from '../../store/geocoordAndWeather/actions';
+import { coordinateRequestByName} from '../../store/geocoordAndWeather/actions';
 import './FormGeocoord.css';
 
 function FormGeocoord() {
-    const { loading, error } = useSelector(state => state.geocoordReducer);
+    const { errorCitySearch, search } = useSelector(state => state.geocoordReducer);
     const dispatch = useDispatch()
+    const [ inputValue, setInputValue ] = useState(search);
 
-    const [ inputValue, setInputValue ] = useState('')
+    useEffect(() => {
+        if (search === '') {
+            setInputValue(search);
+        }
+    }, [search])
 
     const handleChange = (e) => {
         setInputValue(e.target.value);
@@ -15,22 +20,23 @@ function FormGeocoord() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(coordinateRequestSearch(inputValue));
-        setInputValue('');
+        dispatch(coordinateRequestByName(inputValue));
     }
 
   return (
     <div className='form-wrapper'>
         <h2>Узнать погоду в городах</h2>
-        <form onSubmit={handleSubmit}>
+        { errorCitySearch && <div className='error-message-city-search'>{errorCitySearch}</div>}
+        <form className='form-coord' onSubmit={handleSubmit}>
             <input type="text" 
             className='input-search-city' 
             name='city' 
             id='city'
             value={inputValue}
             onChange={handleChange}
+            required
             />
-            <button>Узнать погоду</button>
+            <button className='search-button'></button>
         </form>
     </div>
   );

@@ -10,6 +10,7 @@ function FavouriteList(props) {
     <div className='favourite-block'>
       <h2>Избранное</h2>
         { favouriteList.length === 0 && <div className="empty-list">Список избранного пуст</div> }
+        
         {
           favouriteList.map( item => <FavouriteItem key={item.id} item={item}/>)
         }
