@@ -34,6 +34,7 @@ function FormGeocoord() {
             id='city'
             value={inputValue}
             onChange={handleChange}
+            placeholder='введите название города'
             required
             />
             <button className='search-button'></button>
